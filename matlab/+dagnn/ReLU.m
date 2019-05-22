@@ -26,8 +26,6 @@ classdef ReLU < dagnn.ElementWise
       if ~obj.useShortCircuit || ~obj.net.conserveMemory
         forwardAdvanced@dagnn.Layer(obj, layer) ;
         return ;
-      elseif strcmp(obj.method,'elu') && obj.useShortCircuit
-        error('useShortCircuit is set to true. When ReLU layer method is elu, useShortCircuit must be set to false.')
       end
       net = obj.net ;
       in = layer.inputIndexes ;
