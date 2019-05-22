@@ -636,7 +636,9 @@ args = horzcat({'-outdir', mex_dir}, ...
   {['LINKLIBS=' strjoin(flags.mexlink_linklibs) ' $LINKLIBS']}, ...
   objs) ;
 if ~verLessThan('matlab','9.4')
-  args{end+1} = '-R2018a';
+  if ~strcmp(computer('arch'),'glnxa64')
+    args{end+1} = '-R2018a';
+  end
 end
 opts.verbose && fprintf('%s: MEX LINK: %s\n', mfilename, strjoin(args)) ;
 mex(args{:}) ;
