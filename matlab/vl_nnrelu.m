@@ -72,7 +72,7 @@ else
         y(ind) = opts.leak .* (exp(x(ind)) - 1) ;
       else
         y = dzdy;
-        y(ind) = dzdy(ind) .* opts.leak .* exp(x(ind)) ;
+        y(ind) = dzdy(ind) .* (opts.leak + x(ind)) ;
       end
     otherwise
       error('Unrecognized activation method. Must be either elu or relu.')

@@ -72,10 +72,6 @@ classdef ReLU < dagnn.ElementWise
     end
 
     function obj = ReLU(varargin)
-      ind = find(strcmpi(varargin,'method'));
-      if ~isempty(ind) && strcmpi(varargin{ind+1},'elu')
-          obj.useShortCircuit = false;
-      end
       obj.load(varargin) ;
     end
   end
